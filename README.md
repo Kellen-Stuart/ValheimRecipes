@@ -1,2 +1,2 @@
 # ValheimRecipes
-PowerShell API for Valheim Recipes
+PowerShell function for Valheim Recipes
