@@ -16,7 +16,7 @@ function Get-Recipe
         if($recipeName.ToLower().Trim().Contains($Name.ToLower().Trim()))
         {
             $recipeObject = Get-Content $recipeJsonFile.FullName | Out-String | ConvertFrom-Json
-            $recipeObject
+            Write-Host ($recipeObject | Format-Table | Out-String)
         }
     }
 
