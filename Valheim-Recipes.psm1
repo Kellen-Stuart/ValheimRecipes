@@ -13,7 +13,7 @@ function Get-Recipe
     foreach($recipeJsonFile in $recipeJsonFiles)
     {
         $recipeName = Get-RecipeName $recipeJsonFile
-        if($recipeName.Contains($Name))
+        if($recipeName.ToLower().Trim().Contains($Name.ToLower().Trim()))
         {
             $recipeObject = Get-Content $recipeJsonFile.FullName | Out-String | ConvertFrom-Json
             $recipeObject
