@@ -1,5 +1,6 @@
 {
     "Name": "Turnip Stew",
+    "Cauldron": true,
     "Raw Meat": 1,
     "Turnip": 3
 }

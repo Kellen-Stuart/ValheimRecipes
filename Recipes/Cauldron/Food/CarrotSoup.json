@@ -1,5 +1,6 @@
 {
     "Name": "Carrot Soup",
+    "Cauldron": true,
     "Mushroom": 1,
     "Carrot": 3
 }
