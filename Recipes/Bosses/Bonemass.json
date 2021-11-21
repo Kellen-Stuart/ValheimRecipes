@@ -1,4 +1,6 @@
 {
-    "Name": "Bonemass Oferring",
+    "Name": "Bonemass",
+    "Boss": true,
+    "Biome": "Swamp",
     "Withered Bone": 10
 }
