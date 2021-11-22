@@ -1,4 +1,4 @@
-function Get-Recipe
+function Get-ValheimRecipe
 {
     param(
         [Parameter(Mandatory=$true)]
@@ -22,7 +22,7 @@ function Get-Recipe
 
 }
 
-function Get-RecipeName
+function Get-ValheimRecipeName
 {
     param(
         [Parameter(Mandatory=$true)]
