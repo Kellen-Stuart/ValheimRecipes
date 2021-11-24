@@ -1,25 +1,41 @@
 function Get-ValheimRecipe
 {
     param(
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $Name
+        [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$Name,
+        [string]$Contains
     )
 
     $recipeDirectory = "$PSScriptRoot\Recipes"
     $recipeJsonFiles = Get-ChildItem $recipeDirectory -Recurse -File
 
+    (-not [string]::IsWhitespaceOrEmpty($Name))
+    {
+        Get-RecipeByName $Name
+    }
+    if(-not [string]::IsWhitespaceOrEmpty($Contains))
+    {
+        Get-RecipeContains $Contains
+    }
+}
+
+function Get-RecipeContains
+{
+    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty]$Contains
+}
+
+function Get-RecipeByName
+{
+    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()]$Name
+
     foreach($recipeJsonFile in $recipeJsonFiles)
     {
-        $recipeName = Get-RecipeName $recipeJsonFile
+        $recipeName = Get-ValheimRecipeName $recipeJsonFile
         if($recipeName.ToLower().Trim().Contains($Name.ToLower().Trim()))
         {
             $recipeObject = Get-Content $recipeJsonFile.FullName | Out-String | ConvertFrom-Json
             Write-Host ($recipeObject | Format-Table | Out-String)
         }
     }
-
 }
 
 function Get-ValheimRecipeName
