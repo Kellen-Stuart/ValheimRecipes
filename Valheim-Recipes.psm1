@@ -8,19 +8,14 @@ function Get-ValheimRecipe
     $recipeDirectory = "$PSScriptRoot\Recipes"
     $recipeJsonFiles = Get-ChildItem $recipeDirectory -Recurse -File
 
-    (-not [string]::IsWhitespaceOrEmpty($Name))
+    if(-not [string]::IsNullOrWhiteSpace($Name))
     {
-        Get-RecipeByName $Name
+        Get-RecipeByName -Name $Name
     }
-    if(-not [string]::IsWhitespaceOrEmpty($Contains))
+    elseif(-not [string]::IsNullOrWhiteSpace($Contains))
     {
         Get-RecipeContains $Contains
     }
-}
-
-function Get-RecipeContains
-{
-    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty]$Contains
 }
 
 function Get-RecipeByName
@@ -36,6 +31,11 @@ function Get-RecipeByName
             Write-Host ($recipeObject | Format-Table | Out-String)
         }
     }
+}
+
+function Get-RecipeContains
+{
+    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty]$Contains
 }
 
 function Get-ValheimRecipeName
