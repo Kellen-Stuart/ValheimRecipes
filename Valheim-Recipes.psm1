@@ -12,8 +12,10 @@ function Get-ValheimRecipe
     {
         Get-RecipeByName -Name $Name
     }
-    elseif(-not [string]::IsNullOrWhiteSpace($Contains))
+    
+    if(-not [string]::IsNullOrWhiteSpace($Contains))
     {
+        throw "Contains is not currently supported"
         Get-RecipeContains $Contains
     }
 }
