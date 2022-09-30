@@ -4,5 +4,5 @@
     "Leather Scraps": 6,
     "Resin": 6,
     "Hammer": true,
-    "Requires Workbench": true
+    "Workbench": true
 }
